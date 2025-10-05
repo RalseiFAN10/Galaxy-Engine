@@ -21,19 +21,19 @@ class OptionsState extends MusicBeatState
 
 	function openSelectedSubstate(label:String) {
 		persistentUpdate = false;
-		if (label != "Adjust Delay and Combo") removeTouchPad();
+		if (label != "Delay and Combo Settings") removeTouchPad();
 		switch(label) {
 			case 'Note Colors':
 				openSubState(new options.NotesSubState());
-			case 'Controls':
+			case 'Controls (for PC)':
 				openSubState(new options.ControlsSubState());
-			case 'Graphics':
+			case 'Graphics and Performance':
 				openSubState(new options.GraphicsSettingsSubState());
-			case 'Visuals and UI':
+			case 'Visuals':
 				openSubState(new options.VisualsUISubState());
 			case 'Gameplay':
 				openSubState(new options.GameplaySettingsSubState());
-			case 'Adjust Delay and Combo':
+			case 'Delay and Combo Settings':
 				MusicBeatState.switchState(new options.NoteOffsetState());
 			case 'Mobile Options':
 				openSubState(new mobile.options.MobileOptionsSubState());
