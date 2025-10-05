@@ -77,7 +77,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'ratingOffset',
 			'int');
 		option.displayFormat = '%vms';
-		option.scrollSpeed = 20;
+		option.scrollSpeed = 50;
 		option.minValue = -30;
 		option.maxValue = 30;
 		addOption(option);
@@ -87,9 +87,9 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'sickWindow',
 			'int');
 		option.displayFormat = '%vms';
-		option.scrollSpeed = 15;
-		option.minValue = 15;
-		option.maxValue = 45;
+		option.scrollSpeed = 50;
+		option.minValue = 0;
+		option.maxValue = 500;
 		addOption(option);
 
 		var option:Option = new Option('Good Hit Window',
@@ -97,9 +97,9 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'goodWindow',
 			'int');
 		option.displayFormat = '%vms';
-		option.scrollSpeed = 30;
-		option.minValue = 15;
-		option.maxValue = 90;
+		option.scrollSpeed = 50;
+		option.minValue = 0;
+		option.maxValue = 15;
 		addOption(option);
 
 		var option:Option = new Option('Bad Hit Window',
@@ -108,7 +108,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'int');
 		option.displayFormat = '%vms';
 		option.scrollSpeed = 60;
-		option.minValue = 15;
+		option.minValue = 0;
 		option.maxValue = 135;
 		addOption(option);
 
@@ -141,7 +141,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 	{
 		if(ClientPrefs.data.gameOverVibration)
 		{
-			Haptic.vibrate(0, 500);
+			Haptic.vibrate(0, 200);
 		}
 	}
 }
