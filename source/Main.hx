@@ -51,7 +51,7 @@ class Main extends Sprite
 		height: 720, // WINDOW height
 		initialState: TitleState, // initial game state
 		zoom: -1.0, // game state bounds
-		framerate: 60, // default framerate
+		framerate: 120, // default framerate
 		skipSplash: true, // if the default flixel splash screen should be skipped
 		startFullscreen: false // if the game should start at fullscreen mode
 	};
@@ -129,7 +129,7 @@ class Main extends Sprite
 		}
 		#else
 		if (game.zoom == -1.0)
-			game.zoom = 1.0;
+			game.zoom = 0.6;
 		#end
 	
 		#if LUA_ALLOWED Lua.set_callbacks_function(cpp.Callable.fromStaticFunction(psychlua.CallbackHandler.call)); #end
