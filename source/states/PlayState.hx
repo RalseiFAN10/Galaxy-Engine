@@ -83,14 +83,14 @@ class PlayState extends MusicBeatState
 	public static var ratingStuff:Array<Dynamic> = [
 		['Bye Bye!', 0.2], //From 0% to 19%
 		['FUCK', 0.4], //From 20% to 39%
-		['...'', 0.5], //From 40% to 49%
-		['Survive!', 0.6], //From 50% to 59%
-		['You cannot die for now!', 0.69], //From 60% to 68%
-		['You good?', 0.7], //69%
-		['Good?', 0.8], //From 70% to 79%
+		['...', 0.5], //From 40% to 49%
+		['Be a good player :']', 0.6], //From 50% to 59%
+		['Dont die :[', 0.69], //From 60% to 68%
+		['You cant relax now!', 0.7], //69%
+		['You good?', 0.8], //From 70% to 79%
 		['Good!', 0.9], //From 80% to 89%
 		['Cool!', 1], //From 90% to 99%
-		['Perfect!! :]', 1] //The value on this one isn't used actually, since Perfect is always "1"
+		['Perfect :]', 1] //The value on this one isn't used actually, since Perfect is always "1"
 	];
 
 	//event variables
@@ -569,7 +569,7 @@ class PlayState extends MusicBeatState
 		updateScore(false);
 		uiGroup.add(scoreTxt);
 
-		botplayTxt = new FlxText(400, timeBar.y + 55, FlxG.width - 800, "You are tester, i guess?", 32);
+		botplayTxt = new FlxText(400, timeBar.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
@@ -1024,23 +1024,22 @@ class PlayState extends MusicBeatState
 
 				switch (swagCounter)
 				{
-					case 1:
-					    countdownThree = createCountdownSprite(introAlts[0], antialias);
+					case 0:
 						FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
 						tick = THREE;
-					case 2:
-						countdownTwo = createCountdownSprite(introAlts[0], antialias);
+					case 1:
+						countdownReady = createCountdownSprite(introAlts[0], antialias);
 						FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), 0.6);
 						tick = TWO;
-					case 3: 
-						countdownOne = createCountdownSprite(introAlts[1], antialias);
+					case 2:
+						countdownSet = createCountdownSprite(introAlts[1], antialias);
 						FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), 0.6);
 						tick = ONE;
-					case 4:
+					case 3:
 						countdownGo = createCountdownSprite(introAlts[2], antialias);
 						FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), 0.6);
 						tick = GO;
-					case 5:
+					case 4:
 						tick = START;
 				}
 
@@ -1150,9 +1149,9 @@ class PlayState extends MusicBeatState
 			str += ' (${percent}%) - ${ratingFC}';
 		}
 
-		var tempScore:String = 'Points: ${songScore}'
-		+ (!instakillOnMiss ? ' / Breaks: ${songMisses}' : "")
-		+ ' / Rating: ${str}';
+		var tempScore:String = 'Score: ${songScore}'
+		+ (!instakillOnMiss ? ' | Misses: ${songMisses}' : "")
+		+ ' | Rating: ${str}';
 		// "tempScore" variable is used to prevent another memory leak, just in case
 		// "\n" here prevents the text from being cut off by beat zooms
 		scoreTxt.text = '${tempScore}\n';
@@ -1173,12 +1172,12 @@ class PlayState extends MusicBeatState
 		ratingFC = "";
 		if(songMisses == 0)
 		{
-			if (bads > 0 || shits > 0) ratingFC = 'FC (B)';
-			else if (goods > 0) ratingFC = 'GFC (A)';
-			else if (sicks > 0) ratingFC = 'SFC (S+)';
+			if (bads > 0 || shits > 0) ratingFC = 'FC';
+			else if (goods > 0) ratingFC = 'GFC';
+			else if (sicks > 0) ratingFC = 'SFC';
 		}
 		else {
-			if (songMisses < 10) ratingFC = 'SCDB (F-)';
+			if (songMisses < 10) ratingFC = 'SDCB';
 			else ratingFC = 'Clear';
 		}
 	}
